@@ -5,12 +5,12 @@ from django.template import loader
 
 # Create your views here.
 def index(request):
+    # data
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    template = loader.get_template('polls/index.html')
-    context = {
-        'latest_question_list': latest_question_list,
-    }
-    return HttpResponse(template.render(context, request))
+    # data for html
+    context = {'latest_question_list': latest_question_list}
+    # render the html
+    return render(request, 'polls/index.html', context)
 
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)
