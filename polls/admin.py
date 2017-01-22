@@ -6,6 +6,7 @@ class ChoiceInline(admin.TabularInline):
     extra = 3
 
 class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date', 'was_published_recently')
     # the first parameter of the tuple is the title
     fieldsets = [
         (None, {'fields': ['question_text']}),
