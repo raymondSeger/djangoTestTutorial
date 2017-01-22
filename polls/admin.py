@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Question
+from .models import Question, Choice
+
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 3
 
 class QuestionAdmin(admin.ModelAdmin):
     # the first parameter of the tuple is the title
@@ -7,6 +11,8 @@ class QuestionAdmin(admin.ModelAdmin):
         (None, {'fields': ['question_text']}),
         ('Date information', {'fields': ['pub_date']}),
     ]
+    inlines = [ChoiceInline]
 
 # Register your models here.
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Choice)
