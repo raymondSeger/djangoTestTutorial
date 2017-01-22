@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from . import views
 
+app_name = 'polls'
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
